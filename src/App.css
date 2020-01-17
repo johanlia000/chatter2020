@@ -19,7 +19,7 @@ body{
 .text { 
   padding: 5px 7px 5px 7px; 
   min-width:10px; 
-  max-width:160px; 
+  max-width:50%; 
   display: inline-block;
   border-radius: 10px;
   color: white;
@@ -36,7 +36,7 @@ body{
 }
 
 .arrow-one {
-  bottom: 16.4%;
+  bottom: 15.7%;
 }
 
 .text-two {
@@ -58,10 +58,10 @@ body{
   width: 0; 
   height: 0; 
   position: absolute;
-  left: 13px;
-  border-top: 12px solid transparent;
-  border-bottom: 12px solid transparent;  
-  border-right: 12px solid #8C86BC;
+  left: 17px;
+  border-top: 9px solid transparent;
+  border-bottom: 9px solid transparent;  
+  border-right: 9px solid #8C86BC;
 }
 
 .arrow-right {
@@ -107,13 +107,15 @@ header{
   align-items: center
 }
 
+
 input{
   position: absolute;
-  left: 12px;
-  top: 6px;
-  height: 25px;
-  width: 90%;
-  border-radius:15px;
+  left: 1%;
+  right: 1%;
+  top: 15%;
+  height: 60%;
+  width: 98%;
+  border-radius: 15px;
   border: 1px solid white;
   background: #4b3174;
   color: white;
