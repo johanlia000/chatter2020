@@ -10,6 +10,8 @@ function App() {
   // setMessages is the function
   const [messages, setMessages] = useState([])
   console.log(messages)
+  
+  
   return <main>
 
     <header className = "main-title">
@@ -23,7 +25,7 @@ function App() {
 
     <div className='scroll-messages'>
       {messages.map((m, i)=>{
-        return <div key={i} className='message-wrap'>
+        return <div key={i}>
             <div className='message'>{m}</div>
           </div>
       })}
@@ -41,24 +43,30 @@ function App() {
 
 
 function TextInput(props){
-  const [text, setText] = useState('')
+  var [text, setText] = useState('')
 
   // input box for text messages
-  return <div className="text-input">
-    <input
+  return <div className="text-input-wrap">
+    <input 
+      className='input-text'
       value={text} 
       placeholder= 'write your message'
       onChange={e=> setText(e.target.value)}
+      onKeyPress={e=> {
+        if(e.key=='Enter') {
+          if(text) props.onSend(text)
+          setText('')
+        }
+      }}
     />
     
-  <button className='button' onClick={()=> {
-    if(text) {
-      props.onSend(text)
-    }
+
+  <button onClick={()=> {
+    if(text) props.onSend(text)
     setText('')
-    }}>
-      
-       <div><b>&uarr;</b></div>
+  }} className="button"
+    >
+    <div><b>&uarr;</b></div>
   </button>
   </div>
 }
