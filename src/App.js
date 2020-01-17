@@ -3,33 +3,38 @@ import logo from './logo.svg';
 import './App.css';
 
 function App() {
+
+  // array of messages
+  // inside the useState is [] because we want an empty array
+  // message is the state variable
+  // setMessages is the function
+  const [messages, setMessages] = useState([])
+  console.log(messages)
   return <main>
 
     <header className = "main-title">
     <img
       alt='logo'  
       src='https://thumbs.dreamstime.com/t/white-animal-paw-print-icon-isolated-black-background-white-animal-paw-print-icon-isolated-black-background-vector-111946193.jpg'  
-      style={{width:40, height:40,}}
+      style={{height:"100%"}}
     />
        &nbsp; Chatter
     </header>
 
-   
-
-    <div className='text text-one'>
-      Hey! Do you want to go to dinner?
+    <div className='scroll-messages'>
+      {messages.map((m, i)=>{
+        return <div key={i} className='message-wrap'>
+            <div className='message'>{m}</div>
+          </div>
+      })}
     </div>
-
-    <div className='arrow-left arrow-one'></div>
-
-    <div className='text text-two'>
-      Sure, what time?
-    </div>
-
-    <div className='arrow-right arrow-two'></div>
-
-    <TextInput onSend={t=> console.log(t)}/>
-
+    
+    
+    <TextInput onSend={(text)=> {
+      // const msgs = messages.concat(text)
+      // setMessages(msgs)
+      setMessages([text, ...messages])
+    }}/>
 
   </main>
 }
@@ -38,18 +43,23 @@ function App() {
 function TextInput(props){
   const [text, setText] = useState('')
 
+  // input box for text messages
   return <div className="text-input">
-    <input size='35' value={text} 
+    <input
+      value={text} 
       placeholder= 'write your message'
       onChange={e=> setText(e.target.value)}
     />
-
-    <button className='button' onClick={()=> {
+    
+  <button className='button' onClick={()=> {
+    if(text) {
       props.onSend(text)
-      setText('')
+    }
+    setText('')
     }}>
+      
        <div><b>&uarr;</b></div>
-    </button>
+  </button>
   </div>
 }
 
