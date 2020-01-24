@@ -1,15 +1,31 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import './App.css';
 import NamePicker from './A2_component.js';
+import {db, useDB} from './db'
+import {BrowserRouter, Route} from 'react-router-dom'
 
 
-function App() {
+
+function App(){
+  useEffect(()=>{
+    const {pathname} = window.location
+    if(pathname.length<2) window.location.pathname='home'
+  }, [])
+
+  return <BrowserRouter>
+    <Route path="/:room" component={Room} /> 
+  </BrowserRouter>
+}
+
+
+function Room(props) {
 
   // array of messages
   // inside the useState is [] because we want an empty array
   // message is the state variable
   // setMessages is the function
-  const [messages, setMessages] = useState([])
+  const {room} = props.match.params
+  const messages = useDB(room)
   const [username, setName] = useState("")
   console.log(messages)
   
@@ -34,9 +50,13 @@ function App() {
 
     <div className='scroll-messages'>
       {messages.map((m, i)=>{
-        return <div key={i}>
-            <div className='message'>{m}</div>
-          </div>
+        return <div key={i} className='message-wrap'
+          from={m.name===username?'me':'you'}>
+            <div className='message'>
+              <div className='message-user'>{m.name}</div>
+              <div className='message-text'>{m.text}</div>
+            </div>
+        </div>
       })}
     </div>
     
@@ -44,7 +64,10 @@ function App() {
     <TextInput onSend={(text)=> {
       // const msgs = messages.concat(text)
       // setMessages(msgs)
-      setMessages([text, ...messages])
+      db.send({
+        text, name:username, ts: new Date(), room
+      })
+      //setMessages([text, ...messages])
     }}/>
 
   </main>
