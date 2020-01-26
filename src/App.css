@@ -36,8 +36,8 @@ body{
 .scroll-messages{
   position: absolute;
   left:0;
-  top: 53px;
-  height: calc(100vh - 110px);
+  top: 60px;
+  height: calc(100vh - 116px);
   width:100vw;
   position:absolute;
   display: flex;
@@ -110,94 +110,13 @@ header{
   top:0;
   left:0;
   width: 100%;
-  height: 50px;
+  height: 58px;
   border-bottom: 1px solid black;
   padding: 12 px;
   background: rgba(0, 0, 0, 0.6);
   display:flex;
   align-items: center
 }
-
-/*This is the blue text input where you can write your message*/
-.input-text{
-  position: absolute;
-  left: 1%;
-  right: 1%;
-  top: 10px;
-  height: 30px;
-  width: 98%;
-  border-radius: 15px;
-  padding: 0 8px;
-  border: 1px solid white;
-  background: #2b5e7a;
-  color: white;
-  font-size:14px;
-}
-
-::placeholder {
-  color: #AFC4CB;
-}
-
-
-
-
-/*Code for user to input their username*/
-.input-username {
-  position: absolute;
-  right: 38px;
-  top: 12px;
-  height: 25px;
-  width: 30%;
-  border-radius: 10px;
-  border: 1px solid #619AA2;
-  background: #619AA2;
-  color: white;
-  padding: 0 5px;
-}
-
-.button-username{
-  position: absolute;
-  right: 10px;
-  top: 15px;
-  background: transparent;
-  border: none;
-
-  font-size: 18px;
-  color:white;
-  padding: 1px 2px 2px;
-}
-
-.button-username:hover {
-  color: #E87918;
-}
-
-.button-user-click {
-  position: absolute;
-  right: 10px;
-  top: 10px;
-  height: 26px;
-  width: 26px;
-}
-
-.button-user-click2 {
-  position: absolute;
-  right: 42px;
-  top: 17px;
-  height: 11px;
-  display: table ;
-  max-width: 50% ;
-  min-width: 10px ;
-  background-color:rgba(0, 0, 0, 0.0);
-  color:white;
-  font-size: 12px;
-
-}
-
-
-
-
-
-
 
 .text-input-wrap{
   position: absolute;
@@ -207,14 +126,14 @@ header{
   height: 55px;
   border-top: 1px solid black;
   background:rgba(0,0,0,0.6);
-  padding: 0 10px;
 }
 
-.text-input-wrap:focus {
-  border: 1 px solid yellow;
+.bottom {
+  display: flex;
+  padding: 10px 1%;
+  justify-content: space-around;
+  align-items: center;
 }
-
-
 
 
 .button-text:hover {
@@ -224,7 +143,7 @@ header{
 
 .button-text {
   position: absolute;
-  right: 1%;
+  right: 1.7%;
   top: 10px;
   height: 30px;
   width: 30px;
@@ -240,75 +159,90 @@ header{
   background:grey;
 }
 
+/*This is the blue text input where you can write your message*/
+.input-text{
+  top: 10px;
+  height: 30px;
+  width: 92%;
+  border-radius: 15px;
+  padding: 0 8px;
+  border: 1px solid white;
+  background: #2b5e7a;
+  color: white;
+  font-size:14px;
+}
+
+
+.camera-button { 
+  top: 14px;
+  color:white;
+  font-size: 20px;
+  background: transparent;
+  border: none;
+  padding: 3px 1px 1px 1px;
+}
+
+.camera-button:hover{
+  color: #E87918;
+}
+
+::placeholder {
+  color: #AFC4CB;
+}
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-.text-one {
+/*Code for user to input their username*/
+.input-username {
   position: absolute;
-  left: 25px;
-  bottom: 100px;
+  right: 38px;
+  top: 15px;
+  height: 25px;
+  width: 30%;
+  border-radius: 10px;
+  border: 1px solid #619AA2;
+  background: #619AA2;
+  color: white;
+  padding: 0 5px;
 }
 
-.arrow-one {
-  bottom: 100px;
-}
-
-.text-two {
+.button-username{
   position: absolute;
-  right: 25px;
-  bottom: 10%;
+  right: 10px;
+  top: 17px;
+  background: transparent;
+  border: none;
+
+  font-size: 18px;
+  color:white;
+  padding: 1px 2px 2px;
 }
 
-.arrow-two {
-  bottom: 10.7%;
-}
- 
-.text {
-  font-size: 14px;
+.button-username:hover {
+  color: #E87918;
 }
 
-.arrow-left {
-  width: 0; 
-  height: 0; 
+.button-user-click {
   position: absolute;
-  left: 17px;
-  border-top: 9px solid transparent;
-  border-bottom: 9px solid transparent;  
-  border-right: 9px solid #8C86BC;
+  right: 10px;
+  top: 15px;
+  height: 26px;
+  width: 26px;
 }
 
-.arrow-right {
-  width: 0; 
-  height: 0; 
+.button-user-click2 {
   position: absolute;
-  right: 17px;
-  border-top: 9px solid transparent;
-  border-bottom: 9px solid transparent;  
-  border-left: 9px solid #8C86BC;
+  right: 42px;
+  top: 20px;
+  height: 11px;
+  display: table ;
+  max-width: 50% ;
+  min-width: 10px ;
+  background-color:rgba(0, 0, 0, 0.0);
+  color:white;
+  font-size: 12px;
+
 }
-
-
-
-
-
-
-
 
 

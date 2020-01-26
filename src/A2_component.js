@@ -9,8 +9,14 @@ function NamePicker(props) {
     const [name, setName] = useState('enter username') 
     const inputEl = useRef(null)
 
+    let saveData = localStorage.getItem('name')
+    if(!saveData) {
+       saveData = "Add User" 
+    }
+
  
     if (editName === false) {
+        props.onSend(saveData)
         return <div>
             <div 
                 onClick={()=>{
@@ -35,6 +41,7 @@ function NamePicker(props) {
         <input 
             className='input-username'
             value={name}
+            ref={inputEl}
             placeholder='username'
             onChange={e=> setName(e.target.value)}
 
@@ -43,16 +50,17 @@ function NamePicker(props) {
                     if(name) 
                         props.onSend(name)
                         setName(name)
+                        localStorage.setItem('name',name)
                         setEditName(false)
                 }
             }}  
         />
         
-
         <button onClick={()=> {
                 if(name) 
                     props.onSend(name)
                     setName(name)
+                    localStorage.setItem('name',name)
                     setEditName(false)
             }} className="button-username"
         >

@@ -1,9 +1,10 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useRef} from 'react';
 import './App.css';
 import NamePicker from './A2_component.js';
 import {db, useDB} from './db'
 import {BrowserRouter, Route} from 'react-router-dom'
-
+import {FiCamera } from "react-icons/fi";
+import Camera from 'react-snap-pic'
 
 
 function App(){
@@ -28,6 +29,7 @@ function Room(props) {
   const messages = useDB(room)
   const [username, setName] = useState("")
   console.log(messages)
+  const [showCamera, setShowCamera] = useState(false)
   
   
   return <main>
@@ -60,15 +62,22 @@ function Room(props) {
       })}
     </div>
     
-    
+
+
     <TextInput onSend={(text)=> {
-      // const msgs = messages.concat(text)
-      // setMessages(msgs)
       db.send({
-        text, name:username, ts: new Date(), room
+        text, name:username, ts: new Date(), room,
       })
-      //setMessages([text, ...messages])
-    }}/>
+    }}
+      showCamera={()=>setShowCamera(true)
+    }/>
+
+    {showCamera && <Camera takePicture={(img)=> {
+      console.log(img)
+      setShowCamera(false)
+    }}/>}
+
+
 
   </main>
 }
@@ -76,30 +85,47 @@ function Room(props) {
 
 function TextInput(props){
   var [text, setText] = useState('')
+  const inputEl = useRef(null)
 
   // input box for text messages
   return <div className="text-input-wrap">
-    <input 
-      className='input-text'
-      value={text} 
-      placeholder= 'write your message'
-      onChange={e=> setText(e.target.value)}
-      onKeyPress={e=> {
-        if(e.key ==='Enter') {
-          if(text) props.onSend(text)
+    <div className='bottom'>
+
+      <button onClick={props.showCamera}
+         className="camera-button">
+                <FiCamera /> 
+      </button>
+
+      <input 
+        className='input-text'
+        value={text} 
+        ref={inputEl}
+        placeholder= 'write your message'
+        onChange={e=> setText(e.target.value)}
+        onKeyPress={e=> {
+          if(e.key ==='Enter') {
+            if(text) props.onSend(text)
+            inputEl.current.focus()
+            setText('')
+          }
+        }}
+      />
+
+      <button onClick={()=> {
+        if(text) 
+          props.onSend(text)
+          inputEl.current.focus()
           setText('')
-        }
-      }}
-    />
+        }} className="button button-text"
+        >
+        <div><center><b>&uarr;</b></center></div>
+      </button>
+
+      
+    </div>
     
 
-  <button onClick={()=> {
-    if(text) props.onSend(text)
-    setText('')
-    }} className="button button-text"
-    >
-    <div><center><b>&uarr;</b></center></div>
-  </button>
+    
   </div>
 }
 
