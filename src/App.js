@@ -80,7 +80,7 @@ function Room(props) {
 }
 
 
-const bucket = 'https://firebasestorage.googleapis.com/v0/b/chatter2020.appspot.com/o/'
+const bucket = 'https://firebasestorage.googleapis.com/v0/b/chatter2020-2020.appspot.com/o/'
 const suffix = '.jpg?alt=media'
 
 
@@ -89,7 +89,9 @@ function Message({m, username}){
   from={m.name===username?'me':'you'}>
     <div className='message'>
       <div className='message-user'>{m.name}</div>
-      <div className='message-text'>{m.text}</div>
+      <div className='message-text'>{m.text}
+        {m.img && <img src={bucket + m.img + suffix} alt='pic'/>}
+      </div>
     </div>
 </div>
 }
