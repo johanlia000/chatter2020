@@ -4,6 +4,7 @@
 }
 html{
   height:100%;
+  font-size:13px;
 }
 body{
   font-family:-apple-system,BlinkMacSystemFont,Helvetica Neue,Helvetica,Arial,sans-serif;
@@ -68,6 +69,10 @@ body{
   word-break: break-all;
   word-break: break-word;
   min-width: 10px ;
+}
+
+.message-img {
+  width: 20vw;
 }
 
 .message{

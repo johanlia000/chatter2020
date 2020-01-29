@@ -1,5 +1,6 @@
 import React, {useState, useEffect, useRef} from 'react';
 import './App.css';
+import './media.css';
 import NamePicker from './A2_component.js';
 import {db, useDB} from './db'
 import {BrowserRouter, Route} from 'react-router-dom'
